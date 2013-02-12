@@ -31,7 +31,7 @@ public class Person1 {
 	 */
 	private String calc(String input) {
 	  //Person 1 put your implementation here
-		if(input.length()>=2) return input;
+		if(input.length()<=2) return input;
 		StringBuffer sb = new StringBuffer(input);
 		sb.append(input.charAt(0));
 		sb.append(input.charAt(1));
