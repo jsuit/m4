@@ -31,7 +31,20 @@ public class Person2 {
 	 */
 	private String calc(String input) {
 	  //Person 2 put your implementation here
-	  return null;
+		if (input.length() <= 1) {
+			return input;
+		}
+		int split = input.length()/2;
+		
+		String temp1 = calc(input.substring(0,split));
+		String temp2 = calc(input.substring(split));
+		
+		if (math.random() > 0.5) {
+			return temp1 + temp2;
+		}
+		else {
+			return temp2 + temp1;
+		}
 	}
 	/**
 	 * Return a string rep of this object
