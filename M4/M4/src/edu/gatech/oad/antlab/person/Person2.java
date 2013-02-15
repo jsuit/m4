@@ -39,7 +39,7 @@ public class Person2 {
 		String temp1 = calc(input.substring(0,split));
 		String temp2 = calc(input.substring(split));
 		
-		if (math.random() > 0.5) {
+		if (Math.random() > 0.5) {
 			return temp1 + temp2;
 		}
 		else {
