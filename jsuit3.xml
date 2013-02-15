@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name ="AntLAB" default="all" basedir="M4">
+<project name ="AntLAB" default="all" basedir="M4/M4">
     
     <target name="init">
         <property name="src.dir" value="src"/>
