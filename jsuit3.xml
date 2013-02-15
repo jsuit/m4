@@ -19,7 +19,8 @@
     <target name="compile" depends="prepare">
     	<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
     	    <classpath>
-    	        <fileset dir = "${lib.dir}" includes="resources.jar"/>
+    	        <pathelement path="${java.class.path}"/> 
+    	        <pathelement path = "${lib.dir}/resources.jar"/>
     	    </classpath>
     	</javac>
     </target>
@@ -53,7 +54,7 @@
 	</target>
         
     
-   <target name="clean">
+   <target name="clean" depends="init">
       <delete dir="${build.dir}" />
       <delete dir="${apidoc.dir}"/>
    </target>
