@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="m4" default="all" basedir=".">
+<project name="m4" default="all" basedir="M4/M4">
 
    <target name="init">
      <property name="src.dir" value="src" />
@@ -78,6 +78,6 @@
   </target>
    
   <!-- run all tasks except cleanup -->
-  <target name="all" depends="run" />
+  <target name="all" depends="run, javadoc" />
 
 </project>
