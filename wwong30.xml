@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="M4" default="all" basedir=".">
+    
+    <target name="init">
+        
+       <property name="src.dir" value="src"/>
+       <property name="build.dir" value="build"/>
+       <property name="jar.dir" value="jar"/>
+       <property name="apidoc.dir" value="apidoc"/>
+       <property name="lib.dir" value="lib"/>
+ 
+    </target>
+    
+    <target name="prepare" depends="init">
+        
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${apidoc.dir}"/>
+        
+    </target>
+    
+    <target name="compile" depends="prepare">
+        
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <classpath path="${lib.dir}/resources.jar" />
+        </javac>
+        
+    </target>
+    
+    <target name="javadoc" depends="prepare">
+        
+        <javac sourcepath="${src.dir}" access="public" destdir="${apidoc.dir}" packagenames="edu.gatech.oad.antlab">
+            <fileset dir="${src.dir}">
+                <include name="**/*.java"/>
+            </fileset>
+        </javac>
+        <classpath>
+            <fileset dir="${lib.dir}" includes="resources.jar"/>
+        </classpath>
+    </target>
+    
+    <target name="jar" depends="compile">
+        
+        <jar destfile="AntLabRun.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain"/>
+                <attribute name="Class-Path" value="${lib.dir}/resources.jar/}"/>
+            </manifest>
+        </jar>
+        
+    </target>
+    
+    <target name="run" depends="jar">
+        
+        <java jar="AntLabRun.jar" fork="true">
+            <classpath>
+                <pathelement localtion="."/>
+                <pathelement location=".lib/resources.jar"/>
+            </classpath>
+        </java>
+        
+    </target>
+    
+    <target name="all" depends="run">
+    
+    </target>
+    
+    <target name="clean">
+        
+        <delete dir="${build.dir}"/>
+        <delete dir="${apidoc.dir}"/>
+        
+    </target>
+    
+</project>
